@@ -69,6 +69,7 @@ authRouter.get('/callback', (req, res, next) => {
             )
         })
         .then((doc) => {
+            console.info(`route - auth - db - doc - `, doc)
             if (!doc) throw Error(`user login failed - unable to save user data`)
             return res
                 .redirect(`http://localhost:3000/profile?jtoken=${generateToken(doc.user_email)}`)
