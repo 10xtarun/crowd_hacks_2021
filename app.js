@@ -1,9 +1,13 @@
 const express = require('express')
 const cors = require("cors")
 const { greetingsRouter } = require('./routes/greetings')
+const { connectDB } = require('./configs/db')
 
 // app setup
 const app = express()
+
+// db setup
+connectDB()
 
 // middleware setup
 app.use(cors({ origin: "*" }))
