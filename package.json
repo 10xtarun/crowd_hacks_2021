@@ -5,9 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon server.js",
-    "client": "npm run start --prefix client",
-    "start:curr": "concurrently \"npm run dev\" \"npm run client\"",
-    "start:dev": "export NODE_ENV=dev && npm run start:curr"
+    "start:dev": "export NODE_ENV=dev && npm run dev"
   },
   "keywords": [
     "node",
