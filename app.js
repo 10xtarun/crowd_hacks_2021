@@ -3,7 +3,9 @@ const cors = require("cors")
 const { connectDB } = require('./configs/db')
 const { greetingsRouter } = require('./routes/greetings')
 const { authRouter } = require('./routes/authentication')
-
+const { verifyUser } = require('./middlewares/verify_user')
+const { userRouter } = require('./routes/user')
+const { streamsRouter } = require('./routes/streams')
 
 // app setup
 const app = express()
@@ -18,6 +20,8 @@ app.use(express.urlencoded({ extended: true }))
 
 app.use("", greetingsRouter)
 app.use("/auth", authRouter)
+app.use("/user", verifyUser, userRouter)
+app.use("/streams", verifyUser, streamsRouter)
 
 module.exports = {
     app
