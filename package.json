@@ -4,7 +4,10 @@
   "description": "open health chatting project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon server.js",
+    "client": "npm run start --prefix client",
+    "start:curr": "concurrently \"npm run dev\" \"npm run client\"",
+    "start:dev": "export NODE_ENV=dev && npm run start:curr"
   },
   "keywords": [
     "node",
@@ -21,6 +24,7 @@
     "mongoose": "^6.0.14"
   },
   "devDependencies": {
-    "concurrently": "^6.4.0"
+    "concurrently": "^6.4.0",
+    "nodemon": "^2.0.15"
   }
 }
