@@ -1,0 +1,10 @@
+{
+    "spotify": {
+        "url": "https://accounts.spotify.com",
+        "api": "https://api.spotify.com",
+        "scopes": "user-read-private user-read-email"
+    },
+    "db": {
+        "uri": "mongodb://localhost:27017/cwhacks"
+    }
+}

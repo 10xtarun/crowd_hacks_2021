@@ -1,0 +1,32 @@
+{
+  "name": "crowd_hacks_health_luminous",
+  "version": "1.0.0",
+  "description": "open health chatting project",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "client": "npm run start --prefix client",
+    "start:curr": "concurrently \"npm run dev\" \"npm run client\"",
+    "start:dev": "export NODE_ENV=dev && npm run start:curr"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "react",
+    "mongodb"
+  ],
+  "author": "Tarun Singh, Sourabh Malewade, Hrithik Gavankar",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.14"
+  },
+  "devDependencies": {
+    "concurrently": "^6.4.0",
+    "nodemon": "^2.0.15"
+  }
+}
