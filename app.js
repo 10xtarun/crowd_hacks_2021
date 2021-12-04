@@ -6,6 +6,7 @@ const { authRouter } = require('./routes/authentication')
 const { verifyUser } = require('./middlewares/verify_user')
 const { userRouter } = require('./routes/user')
 const { streamsRouter } = require('./routes/streams')
+const { chatRouter } = require('./routes/chats')
 
 // app setup
 const app = express()
@@ -22,6 +23,7 @@ app.use("", greetingsRouter)
 app.use("/auth", authRouter)
 app.use("/user", verifyUser, userRouter)
 app.use("/streams", verifyUser, streamsRouter)
+app.use("/chat", verifyUser, chatRouter)
 
 module.exports = {
     app
