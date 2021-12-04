@@ -5,6 +5,6 @@
         "scopes": "user-read-private user-read-email"
     },
     "db": {
-        "uri": "mongodb://localhost:27017/cwhacks"
+        "uri": "mongodb+srv://tarun:7UhO6Zt9MLKANZ5E@testdevenv.sjzaf.mongodb.net/cwhawks?retryWrites=true&w=majority"
     }
 }
