@@ -3,5 +3,5 @@ node_modules/
 .dev.env
 config.json
 
-client/config.json
+client/*/config.json
 client/node_modules
