@@ -5,7 +5,7 @@ const config = require("../config.json")
 const { User } = require('../models/user')
 const { generateRandom, generateToken } = require('../utils/helpers')
 const { verifyUser } = require("../middlewares/verify_user")
-const { getRefreshToken } = require('../controllers/authentication')
+const { getRefreshToken, createChatIoUser } = require('../controllers/authentication')
 
 
 authRouter.get('/login', (req, res, next) => {
@@ -37,7 +37,6 @@ authRouter.get('/callback', (req, res, next) => {
         }
     })
         .then(res => {
-            // console.log(JSON.stringify(res.data))
             accessData.access_token = res.data.access_token
             accessData.refresh_token = res.data.refresh_token
             accessData.token_type = res.data.token_type
@@ -65,12 +64,12 @@ authRouter.get('/callback', (req, res, next) => {
             return User.findOneAndUpdate(
                 { user_email: userRes.data.email },
                 newUser,
-                { upsert: true }
+                { upsert: true, new: true }
             )
         })
         .then((doc) => {
-            console.info(`route - auth - db - doc - `, doc)
             if (!doc) throw Error(`user login failed - unable to save user data`)
+            createChatIoUser(doc.user_email)
             return res
                 .redirect(`http://localhost:3000/profile?jtoken=${generateToken(doc.user_email)}`)
         })

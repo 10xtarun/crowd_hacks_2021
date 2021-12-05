@@ -1,3 +1,5 @@
+const { createChatIoUser } = require("../controllers/authentication")
+
 const greetingsRouter = require("express").Router()
 
 greetingsRouter.get('/greetings', (req, res, next) => {

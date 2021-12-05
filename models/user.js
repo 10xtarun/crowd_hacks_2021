@@ -1,5 +1,10 @@
 const mongoose = require("mongoose")
 
+const chatIoSchema = mongoose.Schema({
+    name: String,
+    secret: String
+})
+
 const tracksSchema = mongoose.Schema({
     sid: String,
     name: String,
@@ -35,7 +40,8 @@ const schema = mongoose.Schema({
     scope: String,
     playlists: [playlistSchema],
     audio_features: audioFeatureSchema,
-    tracks: [tracksSchema]
+    tracks: [tracksSchema],
+    chatio: chatIoSchema
 })
 
 const User = mongoose.model("user", schema)
