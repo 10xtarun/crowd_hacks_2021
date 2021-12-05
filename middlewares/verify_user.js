@@ -3,7 +3,6 @@ const { User } = require("../models/user")
 
 const verifyUser = (req, res, next) => {
     const decode = jwt.decode(req.headers.authorization, process.env.SECRET)
-    console.info(`middleware/verifyuser - `, decode)
 
     if (decode && decode.email_id)
         return User.findOne({ user_email: decode.email_id })

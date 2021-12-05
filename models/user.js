@@ -1,5 +1,11 @@
 const mongoose = require("mongoose")
 
+const tracksSchema = mongoose.Schema({
+    sid: String,
+    name: String,
+    artists: [String]
+})
+
 const audioFeatureSchema = mongoose.Schema({
     danceability: String,
     energy: String,
@@ -28,7 +34,8 @@ const schema = mongoose.Schema({
     token_type: String,
     scope: String,
     playlists: [playlistSchema],
-    audio_features: audioFeatureSchema
+    audio_features: audioFeatureSchema,
+    tracks: [tracksSchema]
 })
 
 const User = mongoose.model("user", schema)

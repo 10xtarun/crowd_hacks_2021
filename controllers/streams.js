@@ -31,6 +31,7 @@ const getPlaylists = (req) => {
 }
 
 const getRecentPlayed = (req) => {
+    var trackNames =[]
     var hashData = {
         danceability: 0,
         energy: 0,
@@ -53,9 +54,10 @@ const getRecentPlayed = (req) => {
     })
         .then(response => {
             if (response.data.items) {
+                trackNames = response.data.items.map(it => it.track.name)
                 var ids = ""
                 response.data.items.map(item => ids = ids + "," + item.track.id)
-                
+
                 return axios.get(`${config.spotify.api}/v1/audio-features?ids=${ids}`, {
                     headers: {
                         "Authorization": `Bearer ${req.spotify_token}`,
@@ -96,7 +98,10 @@ const getRecentPlayed = (req) => {
         })
         .then(doc => {
             if (!doc) throw Error('document not found')
-            return doc
+            return {
+                doc,
+                trackNames
+            }
         })
 }
 
